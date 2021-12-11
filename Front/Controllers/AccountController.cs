@@ -14,11 +14,11 @@ namespace Front.Controllers
     public class AccountController : Controller
     {
         private static readonly HttpClient HttpClient = new HttpClient();
-        
+
         [HttpGet]
         public IActionResult Login(string returnUrl = null)
         {
-            return View(new LoginViewModel { ReturnUrl = returnUrl });
+            return View(new LoginViewModel());
         }
         
         [HttpPost]
@@ -27,10 +27,13 @@ namespace Front.Controllers
         {
             if (ModelState.IsValid)
             {
-                Console.WriteLine(model.Password);
-                model.Password = Hasher.HashPassword(model.Password);
+                //model.Password = Hasher.HashPassword(model.Password);
                 var json = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
                 var result = await HttpClient.PostAsync($"http://localhost:5000/SingIn", json);
+                if (result.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception();
+                }
             }
             return View(model);
         }
@@ -42,15 +45,15 @@ namespace Front.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                model.Password = Hasher.HashPassword(model.Password);
+                //model.Password = Hasher.HashPassword(model.Password);
                 var json = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
-                await HttpClient.PostAsync($"http://localhost:5000/SingUp", json);
+                var result = await HttpClient.PostAsync($"http://localhost:5000/SingUp", json);
+                Console.WriteLine(await result.Content.ReadAsStringAsync());
             }
-            return View(model);
         }
     }
 }

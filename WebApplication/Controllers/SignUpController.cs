@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SecuritySobolDori.Labs567.BLL.DTO;
 using SecuritySobolDori.Labs567.BLL.Interfaces;
 
 namespace WebApplication.Controllers
 {
     [ApiController]
-    [Route("/SingIn")]
+    [Route("/SingUp")]
     public class SignUpController
     {
         private readonly ISignUpService _signUpService;
@@ -16,6 +17,6 @@ namespace WebApplication.Controllers
         }
         
         [HttpPost]
-        public async Task<string> SignUp(string login, string password) => await _signUpService.SignUp(login, password);
+        public async Task SignUp(AccountDTO accountDto) => await _signUpService.SignUp(accountDto);
     }
 }

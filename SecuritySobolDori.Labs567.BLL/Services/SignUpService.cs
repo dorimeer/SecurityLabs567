@@ -21,16 +21,16 @@ namespace SecuritySobolDori.Labs567.BLL.Services
 
         public AccountMapper AccountMapper => _accountMapper ??= new AccountMapper();
 
-        public async Task<string> SignUp(string login, string password)
+        public async Task SignUp(AccountDTO accountDto)
         {
-            var entity = await _unitOfWork.AccountRepository.GetAllAsync();
-            var account = entity.FirstOrDefault(_ => _.Login == login 
-                                                     && _.Password == Hasher.HashPassword(password));
-            if (account is null)
-            {
-                throw new NullReferenceException();
-            }
-            return $"{account.Login}, you've SignedIn!";
+            var entity = AccountMapper.Map(accountDto);
+            entity.Password = Hasher.HashPassword(entity.Password);
+            entity.Email = Hasher.EncryptSensitiveData(entity.Email);
+            entity.PhoneNumber = Hasher.EncryptSensitiveData(entity.PhoneNumber);
+            entity.Name = Hasher.EncryptSensitiveData(entity.Name);
+            entity.Surname = Hasher.EncryptSensitiveData(entity.Surname);
+            await _unitOfWork.AccountRepository.InsertAsync(entity);
+            await _unitOfWork.CommitAsync();
         }
     }
 }

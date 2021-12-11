@@ -3,14 +3,14 @@
 <form method="post" asp-controller="Account" asp-action="Register">
     <div asp-validation-summary="ModelOnly"></div>
     <div>
+            <label asp-for="Id"></label><br />
+            <input asp-for="Id" />
+            <span asp-validation-for="Id"></span>
+        </div>
+    <div>
         <label asp-for="Login"></label><br />
         <input asp-for="Login" />
         <span asp-validation-for="Login"></span>
-    </div>
-    <div>
-        <label asp-for="Email"></label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
     </div>
     <div>
         <label asp-for="Name"></label><br />
@@ -23,22 +23,26 @@
         <span asp-validation-for="Surname"></span>
     </div>
     <div>
-        <label asp-for="PhoneNumber"></label><br />
-        <input asp-for="PhoneNumber" />
-        <span asp-validation-for="PhoneNumber"></span>
-    </div>
-    
+            <label asp-for="PhoneNumber"></label><br />
+            <input asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
     <div>
-        <label asp-for="Password"></label><br />
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="PasswordConfirm"></label><br />
-        <input asp-for="PasswordConfirm" />
-        <span asp-validation-for="PasswordConfirm"></span>
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
     </div>
     <div>
-        <input type="submit" value="Register" />
-    </div>
+            <label asp-for="Password"></label><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label asp-for="PasswordConfirm"></label><br />
+            <input asp-for="PasswordConfirm" />
+            <span asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div>
+            <input type="submit" value="Register" />
+        </div>
 </form>

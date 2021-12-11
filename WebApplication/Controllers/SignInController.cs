@@ -6,7 +6,7 @@ using SecuritySobolDori.Labs567.BLL.Interfaces;
 namespace WebApplication.Controllers
 {
     [ApiController]
-    [Route("/SingUp")]
+    [Route("/SingIn")]
     public class SignInController
     {
         private readonly ISignInService _signInService;
@@ -17,6 +17,6 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task SignIn(AccountDTO accountDto) => await _signInService.SignIn(accountDto);
+        public async Task<string> SignIn(string login, string password) => await _signInService.SignIn(login, password);
     }
 }

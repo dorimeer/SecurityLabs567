@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using SecuritySobolDori.Labs567.BLL.DTO;
 using SecuritySobolDori.Labs567.BLL.Hashers;
 using SecuritySobolDori.Labs567.BLL.Interfaces;
@@ -19,12 +21,16 @@ namespace SecuritySobolDori.Labs567.BLL.Services
 
         public AccountMapper AccountMapper => _accountMapper ??= new AccountMapper();
 
-        public async Task SignIn(AccountDTO accountDto)
+        public async Task<string> SignIn(string login, string password)
         {
-            var entity = AccountMapper.Map(accountDto);
-            entity.Password = Hasher.HashPassword(entity.Password);
-            await _unitOfWork.AccountRepository.InsertAsync(entity);
-            await _unitOfWork.CommitAsync();
+            var entity = await _unitOfWork.AccountRepository.GetAllAsync();
+            var account = entity.FirstOrDefault(_ => _.Login == login
+                                                     && BCrypt.Net.BCrypt.Verify(password, _.Password));
+            if (account is null)
+            {
+                throw new NullReferenceException();
+            }
+            return $"{Hasher.DecryptSensitiveData(account.Name)}, you've SignedIn!";
         }
     }
 }

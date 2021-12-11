@@ -5,6 +5,6 @@ namespace SecuritySobolDori.Labs567.BLL.Interfaces
 {
     public interface ISignInService
     {
-        Task SignIn(AccountDTO accountDto);
+        Task<string> SignIn(string login, string password);
     }
 }
