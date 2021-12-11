@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySobolDori.Labs567.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecuritySobolDori.Labs567.BLL", "SecuritySobolDori.Labs567.BLL\SecuritySobolDori.Labs567.BLL.csproj", "{878E8557-63CE-4DA2-8E51-708A991500B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{4B255E2E-87FA-40D3-99B7-769EDF5AA4DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Front", "Front\Front.csproj", "{6F1AFFF0-A9E7-48EE-B4AA-68724C2D488A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{878E8557-63CE-4DA2-8E51-708A991500B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{878E8557-63CE-4DA2-8E51-708A991500B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{878E8557-63CE-4DA2-8E51-708A991500B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B255E2E-87FA-40D3-99B7-769EDF5AA4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B255E2E-87FA-40D3-99B7-769EDF5AA4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B255E2E-87FA-40D3-99B7-769EDF5AA4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B255E2E-87FA-40D3-99B7-769EDF5AA4DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1AFFF0-A9E7-48EE-B4AA-68724C2D488A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1AFFF0-A9E7-48EE-B4AA-68724C2D488A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1AFFF0-A9E7-48EE-B4AA-68724C2D488A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1AFFF0-A9E7-48EE-B4AA-68724C2D488A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

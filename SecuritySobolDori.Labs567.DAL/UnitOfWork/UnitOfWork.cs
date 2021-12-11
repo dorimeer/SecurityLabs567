@@ -7,7 +7,7 @@ using SecuritySobolDori.Labs567.DAL.Repositories;
 
 namespace SecuritySobolDori.Labs567.DAL.UnitOfWork
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _context;
 
